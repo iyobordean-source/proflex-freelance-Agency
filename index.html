@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>ProFlex Freelance Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#050b1a; 
+  --gold:#D4AF37; 
+  --white:#fff;
+   --muted:#94a3b8; --max:1200px;
+}
+*{box-sizing:border-box;
+margin:0;
+padding:0;
+transition:all .4s ease;}
+body{font-family:Poppins;
+background:#f9fafc;
+color:#0b1220;
+line-height:1.5;
+overflow-x:hidden;
+scroll-behavior:smooth;}
+a{text-decoration:none;}
+header{position:fixed;top:0;width:100%;z-index:999;display:flex;justify-content:center;padding:22px 0;transition:all .5s ease;}
+.navbar{max-width:var(--max);width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;background:rgba(5,11,26,0.85);backdrop-filter:blur(10px);border-radius:0 0 20px 20px;}
+.navbar ul{display:flex;list-style:none;gap:36px;}
+.navbar a{color:var(--white);font-weight:600;opacity:.9;transition:all .3s ease;}
+.navbar a:hover{color:var(--gold);opacity:1;letter-spacing:1px;}
+.logo{font-family:Montserrat;font-weight:700;color:var(--gold);font-size:28px;margin-right:24px;}
+.hero{background:linear-gradient(180deg,#050b1a,#071228);padding:200px 20px 120px;color:var(--white);text-align:center;position:relative;overflow:hidden;}
+.hero h1{font-family:Montserrat;font-size:48px;line-height:1.8;margin-bottom:60px;letter-spacing:1px;display:inline-block;}
+.hero h1 span{display:inline-block;margin-right:12px;opacity:0;transform:translateY(40px);}
+.hero p{font-size:20px;color:#e4e8ef;margin-bottom:30px;}
+.hero .btn{padding:18px 36px;border-radius:16px;background:var(--gold);color:var(--navy);font-weight:700;display:inline-block;box-shadow:0 12px 36px rgba(0,0,0,0.35);transition:all .35s ease-in-out;}
+.hero .btn:hover{transform:translateY(-6px) scale(1.06); background:#ffdd70; box-shadow:0 16px 50px rgba(0,0,0,0.4);}
+#particle-canvas{position:absolute;inset:0;z-index:0;pointer-events:none;}
+section{padding:100px 20px;max-width:var(--max);margin:auto;position:relative;z-index:1;}
+h2,h3,h4{font-family:Montserrat;color:#0f1527;margin-bottom:14px;}
+p{color:var(--muted);margin-bottom:18px;}
+.about-card{background:rgba(255,255,255,0.95);backdrop-filter:blur(12px);padding:28px;border-radius:20px;box-shadow:0 18px 48px rgba(0,0,0,0.15);margin-bottom:20px;transform:translateY(0);opacity:1;transition:all .8s ease-in-out;}
+.skill-category{display:inline-block;padding:6px 12px;margin:4px;border-radius:12px;background:#111;color:#fff;cursor:pointer;transition:all .35s ease-in-out;}
+.skill-category:hover{background:#333;}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-top:50px;}
+.svc{background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);padding:28px;border-radius:20px;box-shadow:0 18px 48px rgba(0,0,0,0.12);border:1px solid #e5e7eb;transform:translateY(0);opacity:1;transition:all .45s ease-in-out;}
+.svc:hover{transform:translateY(-10px); box-shadow:0 22px 60px rgba(0,0,0,0.2); border-color:var(--gold);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;margin-top:50px;}
+.portfolio-item{position:relative;border-radius:16px;overflow:hidden;min-height:220px;display:flex;align-items:flex-end;padding:14px;opacity:1;transform:translateY(0);transition:transform .45s ease-in-out;}
+.portfolio-item img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .65s ease-in-out;}
+.portfolio-item:hover img{transform:scale(1.12);}
+.portfolio-item div{position:relative;color:white;font-weight:700;text-shadow:0 3px 14px rgba(0,0,0,0.7);padding:8px;background:rgba(0,0,0,0.45);border-radius:8px;}
+input,textarea,select{width:100%;padding:16px;border-radius:16px;border:0;outline:none;font-size:15px;background:rgba(0,0,0,0.05);color:#0b1220;margin-bottom:18px;transition:all .35s ease-in-out;}
+input:focus,textarea:focus,select:focus{background:rgba(0,0,0,0.1);box-shadow:0 6px 20px rgba(0,0,0,0.2);}
+select option{background:#0a0f1a;color:#fff;}
+.btn-form{display:inline-block;padding:18px 36px;border-radius:16px;background:var(--gold);color:var(--navy);font-weight:700;cursor:pointer;box-shadow:0 12px 36px rgba(0,0,0,0.35);transition:all .35s ease-in-out;}
+.btn-form:hover{transform:translateY(-6px) scale(1.05); background:#ffdd70; box-shadow:0 16px 50px rgba(0,0,0,0.4);}
+.testimonials-container{overflow:hidden; max-width:1200px;margin:auto;position:relative;}
+.testimonials-track{display:flex; transition:transform 1s ease-in-out;}
+.testimonial-card{flex:0 0 100%; background:rgba(255,255,255,0.05); padding:28px; border-radius:20px; backdrop-filter:blur(12px); box-shadow:0 18px 48px rgba(0,0,0,0.2);}
+.testimonial-card p{font-style:italic;margin-bottom:8px;}
+.testimonial-card strong{display:block;margin-top:6px;text-align:right;color:#111;}
+.testimonial-dots{display:flex; justify-content:center; gap:12px; margin-top:40px;}
+.testimonial-dots .dot{width:12px;height:12px;background:#fff;border-radius:50%;opacity:0.5;cursor:pointer;transition:all .35s ease;}
+.testimonial-dots .dot.active{opacity:1;}
+footer{background:var(--navy); color:var(--white); padding:80px 20px; text-align:center;}
+footer a{color:var(--gold);}
+@media(max-width:768px){
+  .hero h1{font-size:32px;line-height:1.8;margin-bottom:40px;}
+  .navbar{padding:16px 20px;}
+  .navbar ul{gap:20px; font-size: 10px;}
+  .logo{margin-right:16px;font-size: 10px;}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="navbar">
+    <div class="logo">ProFlex</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#apply">Apply</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <canvas id="particle-canvas"></canvas>
+  <h1>
+    <span>Connecting</span> <span>Freelancers</span> <span>with</span> <span>Global</span> <span>Work</span> <span>Opportunities</span>
+  </h1>
+  <p>Verified remote work in Typing, Virtual Assistance, Web Design, Copywriting, and Digital Support</p>
+  <a href="#apply" class="btn">Apply Now</a>
+</section>
+
+<section id="about">
+<h2>About Us</h2>
+<div class="about-card">
+<h3>Company Background</h3>
+<p>ProFlex Freelance Agency is a global freelance and remote-work management company connecting skilled individuals with verified online job opportunities. We specialize in professional services including typing, data entry, virtual assistance, digital support, and online project coordination.</p>
+<h4>Our Mission</h4>
+<p>Empower freelancers and businesses through verified, accessible, and flexible digital work opportunities — fostering productivity, trust, and financial independence for every worker.</p>
+<h4>Story</h4>
+<p>Founded in 2022 to bridge the gap between skilled freelancers and verified clients worldwide.</p>
+<div>Skills: 
+  <span class="skill-category">Typing</span>
+  <span class="skill-category">Data Entry</span>
+  <span class="skill-category">Virtual Assistant</span>
+  <span class="skill-category">Web Design</span>
+  <span class="skill-category">Copywriting</span>
+  <span class="skill-category">Digital Support</span>
+</div>
+</div>
+</section>
+
+<section id="services">
+<h2>Our Services</h2>
+<div class="services-grid">
+<div class="svc"><h3>Typing & Data Entry</h3><p>Accurate, fast, and confidential data handling for businesses worldwide.</p></div>
+<div class="svc"><h3>Virtual Assistance</h3><p>Admin support, research, scheduling, inbox management and customer follow-ups.</p></div>
+<div class="svc"><h3>Web Design & Digital Support</h3><p>Modern websites, landing pages, and digital operations with SEO-ready solutions.</p></div>
+<div class="svc"><h3>Copywriting & Content Editing</h3><p>High-quality copy, content editing, and brand messaging solutions.</p></div>
+<div class="svc"><h3>Client Recruitment</h3><p>We source verified remote workers and project-based teams globally.</p></div>
+</div>
+</section>
+
+<section id="portfolio">
+<h2>Portfolio</h2>
+<div class="portfolio-grid">
+<div class="portfolio-item"><img src="assets/IMG-20251110-WA0003.jpg"><div>E-commerce Website</div></div>
+<div class="portfolio-item"><img src="assets/IMG-20251110-WA0002.jpg"><div>Branding & Logo</div></div>
+<div class="portfolio-item"><img src="assets/IMG-20251110-WA0005.jpg"><div>Copywriting</div></div>
+<div class="portfolio-item"><img src="assets/IMG-20251110-WA0004.jpg"><div>UI/UX Design</div></div>
+
+</section>
+
+<section id="testimonials">
+<h2>Testimonials</h2>
+<div class="testimonials-container">
+<div class="testimonials-track">
+<div class="testimonial-card"><p>"ProFlex connected me with high-paying clients worldwide. Professional and reliable!"</p><strong>- Jane Doe</strong></div>
+<div class="testimonial-card"><p>"Hiring freelancers through ProFlex saved my business time and money."</p><strong>- Michael Smith</strong></div>
+<div class="testimonial-card"><p>"The remote jobs are legit and the team guides you every step of the way."</p><strong>- Ahmed Ali</strong></div>
+<div class="testimonial-card"><p>"I love the professionalism and support from ProFlex. Easy to connect with clients."</p><strong>- Emily Chen</strong></div>
+<div class="testimonial-card"><p>"ProFlex helped me get started and guided me through my first remote projects."</p><strong>- Carlos Mendes</strong></div>
+<div class="testimonial-card"><p>"Thanks to ProFlex, my freelance business has grown faster than I imagined."</p><strong>- Priya Singh</strong></div>
+<div class="testimonial-card"><p>"Quick responses, reliable team, highly recommend!"</p><strong>- Daniel Kim</strong></div>
+<div class="testimonial-card"><p>"The opportunities are genuine, and payments are secure."</p><strong>- Aisha Mohammed</strong></div>
+<div class="testimonial-card"><p>"Everything was handled professionally, a 10/10 experience."</p><strong>- Lucas Fernandes</strong></div>
+<div class="testimonial-card"><p>"ProFlex is the best platform for global freelance work!"</p><strong>- Sofia Gonzalez</strong></div>
+</div>
+<div class="testimonial-dots">
+<span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+<span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+</div>
+</div>
+</section>
+
+<section id="apply">
+<h2>Apply / Join Us</h2>
+<form onsubmit="return handleApply(event)" style="max-width:650px;margin:auto;">
+<input name="name" placeholder="Full Name" required>
+<input name="email" type="email" placeholder="Email" required>
+<input name="phone" placeholder="Phone">
+<input name="country" placeholder="Country" required>
+<select name="skill" required>
+<option>Typing & Data Entry</option>
+<option>Virtual Assistant</option>
+<option>Web Design</option>
+<option>Copywriting</option>
+<option>Digital Support</option>
+</select>
+<button class="btn-form">Submit Application</button>
+</form>
+</section>
+
+<footer id="contact">
+<p>Contact: <a href="mailto:proflexgrande@gmail.com">proflexgrande@gmail.com</a> | Telegram: <a href="https://t.me/Projectmanager2089">@Projectmanager2089</a></p>
+<p>&copy; 2025 ProFlex Freelance Agency. All rights reserved.</p>
+</footer>
+
+<script>
+// Hero Animation
+const spans=document.querySelectorAll('.hero h1 span');
+spans.forEach((span,i)=>setTimeout(()=>{span.style.opacity=1;span.style.transform='translateY(0)';},i*300));
+// Smooth scroll
+document.querySelectorAll('.navbar a').forEach(link=>link.addEventListener('click',e=>{e.preventDefault();document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});}));
+function handleApply(e){e.preventDefault();alert('Application submitted!');e.target.reset();return false;}
+// Testimonials
+let track=document.querySelector('.testimonials-track'); let dots=document.querySelectorAll('.testimonial-dots .dot'); let index=0;
+function updateTestimonials(i){track.style.transform=`translateX(-${i*100}%)`;dots.forEach(d=>d.classList.remove('active'));dots[i].classList.add('active');}
+dots.forEach((dot,i)=>dot.addEventListener('click',()=>{index=i;updateTestimonials(index);}));
+setInterval(()=>{index=(index+1)%dots.length;updateTestimonials(index);},3000);
+updateTestimonials(0);
+
+// Particles
+const canvas=document.getElementById('particle-canvas');const ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;let particles=[];class Particle{constructor(){this.x=Math.random()*canvas.width;this.y=Math.random()*canvas.height;this.size=Math.random()*3+1;this.speedX=Math.random()*1-0.5;this.speedY=Math.random()*1-0.5;}update(){this.x+=this.speedX;this.y+=this.speedY;if(this.x>canvas.width||this.x<0)this.speedX*=-1;if(this.y>canvas.height||this.y<0)this.speedY*=-1;}draw(){ctx.fillStyle='rgba(212,175,55,0.7)';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();}}
+for(let i=0;i<120;i++){particles.push(new Particle());}
+function animateParticles(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animateParticles);}
+animateParticles();
+window.addEventListener('resize',()=>{canvas.width=window.innerWidth;canvas.height=window.innerHeight;});
+</script>
+</body>
+</html>
